@@ -3,6 +3,10 @@
 Amazon QuickSight is AWS's cloud-native, serverless business intelligence (BI) service that enables you to create and publish interactive dashboards with data visualizations, ML-powered insights, and natural language queries.
 
 ---
+## PreReqs:
+1. Go to AWS Sandbox Account: https://d-906778ee70.awsapps.com/start/#/
+2. Go to Amazon QuickSuite
+3. From the git repo, Download file SaaS-Sales.csv
 
 ## Part 1: Create Analysis in QuickSight
 
