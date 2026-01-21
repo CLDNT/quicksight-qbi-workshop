@@ -159,11 +159,69 @@ Amazon Q enables natural language queries on your data.
    - Edit mode also shows which dataset is being used to answer the question
 
 ---
+### Step 4 – Add New Dataset
 
-### Step 4 – Add Dataset to Topic
+We can include multiple datasets in the same topic. Q will select the dataset to query based on the fields or time granularity specified in the question.
 
-*(Content appears to be incomplete in the original. Add additional steps as needed)*
+#### Create a New Dataset
 
+1. Open **Datasets** view from left panel and click **New dataset** button
+
+2. Select **S3** and enter the following details:
+   - **Data source name:** `SaaS-Sales-MonthlySummary`
+   - **Manifest file URL:**
+     ```
+     https://ws-assets-prod-iad-r-iad-ed304a55c2ca1aee.s3.us-east-1.amazonaws.com/cd8ebba2-2ef8-431a-8f72-ca7f6761713d/datasets/SaaSSalesMonthlySummaryManifest.json
+     ```
+   - Click **Connect** button
+
+> **Note:** When using other regions, you might encounter a parsing error. In that case:
+> - Download the manifest file to local (using browser)
+> - Use it by selecting upload option (instead of URL) in S3 data source menu
+> 
+> **Alternative:** Allow list the S3 bucket in:
+> - **Manage QuickSight** → **Security & permissions** → **Manage** → **Select S3 buckets** → **S3 Buckets You Can Access Across AWS** → **Use a different bucket** → **Add S3 bucket:** `ws-assets-prod-iad-r-iad-ed304a55c2ca1aee`
+
+3. On **Finish dataset creation** dialogue, click **Edit/Preview data** button
+
+4. In **Data prep** view, click **SAVE & PUBLISH** button
+
+5. Click **QuickSight** icon to exit data prep view
+
+---
+
+### Step 5 – Include New Dataset in Q Topic
+
+Additional datasets can be added to a topic by selecting the datasets we want to add.
+
+1. Launch **Topics** view from left panel and click on **SaaS-Sales** topic to open it
+
+2. Open **Data** tab, switch to **DATASETS** view and click the **ADD DATASETS** button
+
+3. Select the radio button against **SaaS-Sales-MonthlySummary**
+   - Search for it with partial/full name if the dataset is not present in the initial list
+
+4. Click the **ADD DATASETS** button
+
+---
+
+### Step 6 – Configure Time Basis for Datasets
+
+**Time basis** setting is used to specify the date granularity of the dataset. This helps Q route queries to the optimal dataset.
+
+> **Note:** This is more useful when you have similar direct query datasets having data at different time granularities. We are doing this with unsimilar SPICE datasets for ease of trying this out in workshop setting.
+
+1. Expand **SaaS-Sales** dataset entry and configure:
+   - Set **Time Basis** to **Daily**
+   - Q should have already identified **Order Date** as **Default date**
+   - If it didn't, make this setting manually
+
+2. Likewise, for **SaaS-Sales-MonthlySummary**, configure:
+   - Set **Time Basis** to **Monthly**
+   - Cross-check **Default date** setting
+
+3. Wait for Q to finish indexing the summary dataset
+   - We will test the above settings later on in this module
 ---
 
 ## Resources
