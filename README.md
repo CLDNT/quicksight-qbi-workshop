@@ -209,7 +209,7 @@ Additional datasets can be added to a topic by selecting the datasets we want to
 
 ---
 
-### Step 6 – Configure Time Basis for Datasets
+### Step 6 – Configure Time Basis for Datasets in Qtopics
 
 **Time basis** setting is used to specify the date granularity of the dataset. This helps Q route queries to the optimal dataset.
 
